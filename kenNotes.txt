@@ -1,0 +1,15 @@
+3 Dec 15 status/notes
+- python/FCNeval.py is modified version of eval.py, provided by the PASCAL-context (but not just PASCAL) model in model zoo. Some of the models output "score", others "upscore". Also some are on PASCAL-context (60 classes) and others on straight PASCAL (20 classes). 
+
+- Labels/categories maps to numbers are in data/ dir as txt files.
+
+- python/draw_net.py is pretty sweet, use it to visualize networks! Unfortunatly most of the FCN networks use outdated (or are they too futuristic?) prototxt labels like "layers" instead of "layer", MACRO_THINGS instead of "Strings". Hilariously though, it doesn't complain, because it just ignores all the "layers". I manually converted a FCN-16 deploy prototxt, fcn-16s-pascal-deploy_updated.prototxt, to visualize: fcn16-deploy-net.png. Hardest part was converting blobs_lr: 1 blobs_lr: 2 weight_decay: 1 weight_decay: 0, which shouldn't even be in a deploy prototxt right? Maybe not necessary just to visualize, but also wanted to run.
+
+- draw_net.py always says "Couldn't import dot_parser, loading of dot files will not be possible." but it still works. Maybe something to do with how I installed pydot (via pip) and graphviz (via aptitude)?
+
+- Crop and Deconvolution layer types are, I think, both only in longjon future branch. "Crop" in particular isn't very clear what it's doing, need to look at, defined in /src/caffe/layers/crop_layer.cpp In network models, you can see many things going into crop and one output. Less than two inputs (e.g. by commenting out a "bottom:") will crash.
+
+- FCNs are finetuned and modified from VGG-16. I downloaded and updated the VGG-16 deploy prototxt, but not yet the model itself. Link is here:
+https://gist.github.com/ksimonyan/211839e770f7b538e2d8#file-readme-md 
+
+- It's illuminating to look at the model net .pngs, stored with the models in their dirs. Particularly how VGG-16 was changed to fcn32 (starting after pool5), and fcn32 vs fcn16.
