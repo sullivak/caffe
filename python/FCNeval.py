@@ -16,15 +16,15 @@ import caffe
 image_path =  "/home/sullivan/Dropbox (MC)/MC Team Folder/Research/ImageClassification/caffe_exps_data/data/aerial/images/houses_025.jpg" 
 
 # http://stackoverflow.com/questions/32451934/image-per-pixel-scene-labeling-output-issue-using-fcn-32s-semantic-segmentation/32471602#32471602
-caffemodel_path = os.path.join(caffe_base_path, "models/FCN/FCN-32-60class", "fcn-32s-pascalcontext.caffemodel")
-prototxt_path = os.path.join(caffe_base_path, "models/FCN/FCN-32-60class", "deploy.prototxt")
+caffemodel_path = os.path.join(caffe_base_path, "models/mcmodels/FCN/FCN-32-60class", "fcn-32s-pascalcontext.caffemodel")
+prototxt_path = os.path.join(caffe_base_path, "models/mcmodels/FCN/FCN-32-60class", "deploy.prototxt")
 
-#caffemodel_path = os.path.join(caffe_base_path, "models/FCN/FCN-16", "fcn-16s-pascal.caffemodel")
-#prototxt_path = os.path.join(caffe_base_path, "models/FCN/FCN-16", "fcn-16s-pascal-deploy.prototxt")
-#prototxt_path = os.path.join(caffe_base_path, "models/FCN/FCN-16", "fcn-16s-pascal-deploy_updated.prototxt")
+#caffemodel_path = os.path.join(caffe_base_path, "models/mcmodels/FCN/FCN-16", "fcn-16s-pascal.caffemodel")
+#prototxt_path = os.path.join(caffe_base_path, "models/mcmodels/FCN/FCN-16", "fcn-16s-pascal-deploy.prototxt")
+#prototxt_path = os.path.join(caffe_base_path, "models/mcmodels/FCN/FCN-16", "fcn-16s-pascal-deploy_updated.prototxt")
 
-#caffemodel_path = os.path.join(caffe_base_path, "models/FCN/FCN-8", "fcn-8s-pascal.caffemodel")
-#prototxt_path = os.path.join(caffe_base_path,  "models/FCN/FCN-8", "fcn-8s-pascal-deploy.prototxt")
+#caffemodel_path = os.path.join(caffe_base_path, "models/mcmodels/FCN/FCN-8", "fcn-8s-pascal.caffemodel")
+#prototxt_path = os.path.join(caffe_base_path,  "models/mcmodels/FCN/FCN-8", "fcn-8s-pascal-deploy.prototxt")
 
 # load net
 net = caffe.Net(prototxt_path, caffemodel_path, caffe.TEST)

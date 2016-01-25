@@ -1,3 +1,7 @@
+"""
+Simple utility to see exact value of pixel hovering over. Needs mpldatacursor
+Can provide filename as argument or leave blank for default
+"""
 import cv2
 import mpldatacursor
 import matplotlib.pyplot as plt
