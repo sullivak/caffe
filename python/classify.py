@@ -93,6 +93,17 @@ def main(argv):
     mean, channel_swap = None, None
     if args.mean_file:
         mean = np.load(args.mean_file)
+        # experiment to load binaryproto, needs work:        
+        #filename, extension = os.path.splitext(args.mean_file)
+        #if extension == '.binaryproto':
+        #    blob_fmt = caffe.proto.caffe_pb2.BlobProto()
+        #    data_str = open(args.mean_file, 'rb').read()
+        #    print "Reading binaryproto..."
+        #    blob_fmt.ParseFromString(data_str)
+        #    print "Done"
+        #    mean = caffe.io.blobproto_to_array(blob_fmt)
+        #else:  # assume npy
+        #    mean = np.load(args.mean_file)
     if args.channel_swap:
         channel_swap = [int(s) for s in args.channel_swap.split(',')]
 
@@ -131,7 +142,18 @@ def main(argv):
 
     # Save
     print("Saving results into %s" % args.output_file)
-    np.save(args.output_file, predictions)
+    #np.save(args.output_file, predictions)
+    np.savetxt(args.output_file, predictions, delimiter=',', fmt='%.3f')
+
+    # print predictions
+    predict_list = predictions.flatten().tolist()
+    output_fmt = "{0}: {1:.3}"
+    for ind, prediction in enumerate(predict_list):
+        print output_fmt.format(ind, prediction)
+
+    max_ind, max_val = max(enumerate(predict_list), key=lambda p: p[1])
+    output_fmt = "Maxind: {0}, prob: {1:.3}"
+    print output_fmt.format(max_ind, max_val)
 
 
 if __name__ == '__main__':

@@ -1,3 +1,8 @@
+########################
+
+MOVED TO GOOGLE DOCS!!
+
+########################
 1.)Download right video driver from NVIDIA website, muck about with linux to get two monitors working without hanging on boot. (nouveau or something deleted xorg.conf...)
 
 2.)Download CUDA from NVIDIA website, install
